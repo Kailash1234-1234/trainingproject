@@ -315,5 +315,4 @@
       $('#facebox .loading').remove()
     })
   })
-
 })(jQuery);
