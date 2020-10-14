@@ -1,4 +1,17 @@
-<?php include('header.php'); ?>
+<?php
+/**
+ * Templet File Doc Comment
+ * 
+ * PHP version /
+ * 
+ * @category Tenplete_Class
+ * @package  Templete_Class
+ * @author   Author <author@domain.com>
+ * @license  http://opensource.org/MIT MIT License
+ * @link     http://localhost/
+ */
+  require 'header.php'; 
+?>
 	<?php include('sidebar.php') ?>
 <div id="main-content"> <!-- Main Content Section with everything -->
 			
@@ -58,20 +71,17 @@
 					<div class="clear"></div>
 					
 				</div> <!-- End .content-box-header -->
-				
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 				<div class="content-box-content">
-					
 					<div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
-						
 						<div class="notification attention png_bg">
 							<a href="#" class="close"><img src="resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
 							<div>
 								This is a Content Box. You can put whatever you want in it. By the way, you can close this notification with the top-right cross.
 							</div>
 						</div>
-						
-						<table>
-							
+						<div id="showtable">
+						<table>	
 							<thead>
 								<tr>
 								   <th><input class="check-all" type="checkbox" /></th>
@@ -82,9 +92,7 @@
 								   <th>Description</th>
 								   <th>Action</th>
 								</tr>
-								
 							</thead>
-						 
 							<tfoot>
 								<tr>
 									<td colspan="6">
@@ -109,111 +117,13 @@
 									</td>
 								</tr>
 							</tfoot>
-						 
 							<tbody>
 								<tr>
-									<td><input type="checkbox" /></td>
+							        <td><input type="checkbox" /></td>
 									<td>Lorem ipsum dolor</td>
 									<td><a href="#" title="title">Sit amet</a></td>
 									<td>Consectetur adipiscing</td>
 									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
-									<td>Donec tortor diam</td>
-									<td>
-										<!-- Icons -->
-										 <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td>Lorem ipsum dolor</td>
-									<td><a href="#" title="title">Sit amet</a></td>
-									<td>Consectetur adipiscing</td>
 									<td>Donec tortor diam</td>
 									<td>
 										<!-- Icons -->
@@ -223,43 +133,49 @@
 									</td>
 								</tr>
 							</tbody>
-							
 						</table>
-						
+                      </div>
 					</div> <!-- End #tab1 -->
-					
+					<script>
+						$(document).ready(function(){
+							function loadproduct(){
+								$.ajax({
+										url : "showproduct.php",
+										type : "POST",
+										success : function(data){
+											$("#showtable").html(data);
+										}
+									});
+								}
+								loadproduct();
+						});
+					</script>
 					<div class="tab-content" id="tab2">
 					
-						<form>
-							
-							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
-								
-								<p>
-									<label>Name </label>
+					<form>
+						<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+							<p>
+								<label>Name </label>
 										<input class="text-input medium-input" type="text" id="name" name="medium-input" /> <span class="input-notification success png_bg" style="display:none" >Successful message</span> <!-- Classes for input-notification: success, error, information, attention -->
 										<br/>
 								</p>
-								
 								<p>
 									<label>Price</label>
 									<input class="text-input small-input datepicker" type="number" id="price" name="small-input" /> <span class="input-notification error png_bg" style="display:none">Error message</span>
 								</p>
-								
 								<p>
 									<label>Image</label>
 									<input class="text-input small-input" type="file" id="photo" name="photo" />
 								</p>
-								
 								<p>
 									<label>Category </label>
-									<select name="dropdown" id="category" class="small-input">
+									<select name="category" id="category" class="small-input">
 										<option value="1">Men</option>
 										<option value="2">Women</option>
 										<option value="3">Kids</option>
 										<option value="4">Electronics</option>
 										<option value="5">Sports</option>
 									</select> 
-									
 								</p>
 								<p>
 									<label>Tages</label>              
@@ -271,11 +187,15 @@
 									<input type="checkbox" name="headphone" /> Headphone
 								</p>
 								<p>
-									<label>Description </label>
-									<textarea class="text-input textarea wysiwyg" id="desc" name="textfield" cols="79" rows="15"></textarea>
+									<label>Short Decription </label>
+									<textarea class="text-input textarea wysiwyg" id="sdesc" name="textfield" cols="70" rows="5"></textarea>
 								</p>
 								<p>
-									<input class="button" id="addproduct" type="submit" value="Submit" />
+									<label> Long Description </label>
+									<textarea class="text-input textarea wysiwyg" id="ldesc" name="textfield" cols="70" rows="10"></textarea>
+								</p>
+								<p>
+									<input class="button" id="addproduct" type="button" value="Submit" />
 								</p>
 								
 							</fieldset>
@@ -292,18 +212,40 @@
 			
                     <script>
 						$(document).ready(function(){
-							$("#submit").click(function(e){
+							$("#addproduct").on('click', function(e){
+								//alert("kailash chandra yadav");
 								e.preventDefault();
-								alert("kailash chandra yadav");
+								var name= $("#name").val();
+								var price= $("#price").val();
+								var photo= $("#photo").val();
+								var category= $("#category").val();
+								var sdesc= $("#sdesc").val();
+								var ldesc= $("#ldesc").val();
+							//	document.write(name+price+photo+category+desc);
+							   // console.log(".........................");
+								$.ajax({
+									url : "addproduct.php",
+									type : "POST",
+									data : {
+										pname : name,
+										pprice : price,
+										pphoto : photo, 
+										pcategory : category, 
+										psdesc : sdesc,
+										pldesc : ldesc
+										},  
+									success : function(data){
+										alert(data);
+										if(data==1){
+											alert("success");
+										} else {
+											alert("error");
+
+						}
+					}
+								});	
+							});
 						});
-					})
-								
-        // var name= $("#name").val();
-        // var email= $("#email").val();
-        // var password= $("#pass").val();
-        // var cpassword= $("#cpass").val();
-        // var place= $("#place").val();
-						
 					</script>
 
 
@@ -396,6 +338,3 @@
 			 -->
 			<!-- End Notifications -->
 <?php  include('footer.php');  ?>			
-<script>
-	$(document).ready()
-</script>
