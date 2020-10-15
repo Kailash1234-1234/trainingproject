@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$sql= "SELECT * FROM products";
+$sql= "SELECT * FROM tags";
 $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
 $output="";
 if (mysqli_num_rows($result) > 0) {
@@ -9,13 +9,8 @@ if (mysqli_num_rows($result) > 0) {
     <thead>
 		<tr>
 		    <th><input class="check-all" type="checkbox" /></th>
-			<th>Product Id</th>
+			<th>Category Id</th>
 			<th>Name</th>
-			<th>Picture</th>
-            <th>Price</th>
-            <th>category</th>
-            <th>Short Description</th>
-            <th>Long Description</th>
 			<th>Action</th>
 		</tr>
     </thead>
@@ -44,17 +39,13 @@ if (mysqli_num_rows($result) > 0) {
     </tfoot>
     <tbody>';
     while ($row = mysqli_fetch_assoc($result)) {
-       $output .="<tr>
-       <td><input type='checkbox' /></td>
-       <td>P@{$row["product_id"]}COSS</td><td>{$row["name"]}</td>
-       <td><img style='height:20px; width:60px;' src='resources/images/{$row["image"]}' alt='Edit'></td>
-       <td>{$row["price"]}</td>
-       <td>{$row["category_id"]}</td>
-       <td>{$row["short_desc"]}</td><td>{$row["long_desc"]}</td>
-       <td>
+        $output .="<tr>
+        <td><input type='checkbox' /></td>
+        <td>PT{$row["id"]}</td><td>{$row["name"]}</td>
            <!-- Icons -->
+           <td>
             <a href='#' title='Edit'><img src='resources/images/icons/pencil.png' alt='Edit' /></a>
-            <a title='Delete'  ><img class='delete-data'  data-id='{$row["product_id"]}' src='resources/images/icons/cross.png' alt='Delete'  /></a> 
+            <a title='Delete'  ><img class='delete-cat'  data-tid='{$row["id"]}' src='resources/images/icons/cross.png' alt='Delete'  /></a> 
             <a href='#' title='Edit Meta'><img src='resources/images/icons/hammer_screwdriver.png' alt='Edit Meta' /></a>
        </td>
    </tr>";

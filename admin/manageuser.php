@@ -381,6 +381,3 @@
 			 -->
 			<!-- End Notifications -->
 <?php  include('footer.php');  ?>			
-<script>
-	$(document).ready()
-</script>

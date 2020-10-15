@@ -12,6 +12,7 @@
 <script type="text/javascript" src="resources/scripts/jquery.wysiwyg.js"></script>
 <script type="text/javascript" src="resources/scripts/jquery.datePicker.js"></script>
 <script type="text/javascript" src="resources/scripts/jquery.date.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		

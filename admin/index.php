@@ -10,52 +10,46 @@
  * @license  http://opensource.org/MIT MIT License
  * @link     http://localhost/
  */
-  require 'header.php'; 
+require 'header.php'; 
 ?>
-	<?php include('sidebar.php') ?>
+<?php include('sidebar.php') ?>
 <div id="main-content"> <!-- Main Content Section with everything -->
-			
-			<noscript> <!-- Show a notification if the user has disabled javascript -->
-				<div class="notification error png_bg">
-					<div>
-						Javascript is disabled or is not supported by your browser. Please <a href="http://browsehappy.com/" title="Upgrade to a better browser">upgrade</a> your browser or <a href="http://www.google.com/support/bin/answer.py?answer=23852" title="Enable Javascript in your browser">enable</a> Javascript to navigate the interface properly.
-					</div>
-				</div>
-			</noscript>
-			
-			<!-- Page Head -->
-			<h2>Welcome John</h2>
-			<p id="page-intro">What would you like to do?</p>
-			
-			<!-- <ul class="shortcut-buttons-set">
-				
-				<li><a class="shortcut-button" href="#"><span>
-					<img src="resources/images/icons/pencil_48.png" alt="icon" /><br />
-					Write an Article
-				</span></a></li>
-				
-				<li><a class="shortcut-button" href="#"><span>
-					<img src="resources/images/icons/paper_content_pencil_48.png" alt="icon" /><br />
-					Create a New Page
-				</span></a></li>
-				
+  <noscript> <!-- Show a notification if the user has disabled javascript -->
+      <div class="notification error png_bg">
+        <div>
+          Javascript is disabled or is not supported by your browser. Please 
+          <a href="http://browsehappy.com/" title="Upgrade to a better browser">upgrade</a> your browser or 
+          <a href="http://www.google.com/support/bin/answer.py?answer=23852" title="Enable Javascript in your   browser">enable</a>
+          Javascript to navigate the interface properly.
+        </div>
+      </div>
+  </noscript>
+<!-- Page Head -->
+    <h2>Welcome John</h2>
+    <p id="page-intro">What would you like to do?</p>
+    <!-- <ul class="shortcut-buttons-set">
+    <li><a class="shortcut-button" href="#"><span>
+    <img src="resources/images/icons/pencil_48.png" alt="icon" /><br />
+     Write an Article
+    </span></a></li>
+    <li><a class="shortcut-button" href="#"><span>
+    <img src="resources/images/icons/paper_content_pencil_48.png" alt="icon" /><br />
+    Create a New Page
+				</span></a>
+			</li>
 				<li><a class="shortcut-button" href="#"><span>
 					<img src="resources/images/icons/image_add_48.png" alt="icon" /><br />
 					Upload an Image
 				</span></a></li>
-				
 				<li><a class="shortcut-button" href="#"><span>
 					<img src="resources/images/icons/clock_48.png" alt="icon" /><br />
 					Add an Event
 				</span></a></li>
-				
 				<li><a class="shortcut-button" href="#messages" rel="modal"><span>
 					<img src="resources/images/icons/comment_48.png" alt="icon" /><br />
 					Open Modal
 				</span></a></li>
-				
 			</ul>  End .shortcut-buttons-set -->
-			
 			<div class="clear"></div> <!-- End .clear -->
 			
 			<div class="content-box"><!-- Start Content Box -->
@@ -71,7 +65,7 @@
 					<div class="clear"></div>
 					
 				</div> <!-- End .content-box-header -->
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			
 				<div class="content-box-content">
 					<div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
 						<div class="notification attention png_bg">
@@ -104,7 +98,7 @@
 											</select>
 											<a class="button" href="#">Apply to selected</a>
 										</div>
-										
+			
 										<div class="pagination">
 											<a href="#" title="First Page">&laquo; First</a><a href="#" title="Previous Page">&laquo; Previous</a>
 											<a href="#" class="number" title="1">1</a>
@@ -136,23 +130,10 @@
 						</table>
                       </div>
 					</div> <!-- End #tab1 -->
-					<script>
-						$(document).ready(function(){
-							function loadproduct(){
-								$.ajax({
-										url : "showproduct.php",
-										type : "POST",
-										success : function(data){
-											$("#showtable").html(data);
-										}
-									});
-								}
-								loadproduct();
-						});
-					</script>
+					
 					<div class="tab-content" id="tab2">
 					
-					<form>
+					<form id="product-form">
 						<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 							<p>
 								<label>Name </label>
@@ -165,7 +146,7 @@
 								</p>
 								<p>
 									<label>Image</label>
-									<input class="text-input small-input" type="file" id="photo" name="photo" />
+									<input  class="text-input small-input" type="file" id="photo" name="photo" />
 								</p>
 								<p>
 									<label>Category </label>
@@ -179,12 +160,12 @@
 								</p>
 								<p>
 									<label>Tages</label>              
-									<input type="checkbox" name="fashion" />Fashion
-									<input type="checkbox" name="ecommerce" />Ecommerce
-									<input type="checkbox" name="shop" /> Shop
-									<input type="checkbox" name="handbag" /> Hand Bag
-									<input type="checkbox" name="laptop" /> Laptop
-									<input type="checkbox" name="headphone" /> Headphone
+									<input type="checkbox" class="tag" name="fashion" value="Fashion" />Fashion
+									<input type="checkbox" class="tag"  name="ecommerce" value="ECommerce" />Ecommerce
+									<input type="checkbox" class="tag"  name="shop" value="Shop"/> Shop
+									<input type="checkbox" class="tag"  name="handbag" value="Handbag" /> Hand Bag
+									<input type="checkbox" class="tag"  name="laptop" value="Laptop" /> Laptop
+									<input type="checkbox" class="tag"  name="headphone" value="Headphone" /> Headphone
 								</p>
 								<p>
 									<label>Short Decription </label>
@@ -195,7 +176,7 @@
 									<textarea class="text-input textarea wysiwyg" id="ldesc" name="textfield" cols="70" rows="10"></textarea>
 								</p>
 								<p>
-									<input class="button" id="addproduct" type="button" value="Submit" />
+									<input class="button" id="addproduct" type="submit" value="Submit" />
 								</p>
 								
 							</fieldset>
@@ -211,18 +192,38 @@
 			</div> <!-- End .content-box -->
 			
                     <script>
+
 						$(document).ready(function(){
-							$("#addproduct").on('click', function(e){
-								//alert("kailash chandra yadav");
+							// show table record 
+                            function loadproduct(){
+								$.ajax({
+										url : "showproduct.php",
+										type : "POST",
+										success : function(data){
+											$("#showtable").html(data);
+										}
+									});
+								}
+								loadproduct();
+                            //add product into the database
+							$("#product-form").submit(function(e){
 								e.preventDefault();
 								var name= $("#name").val();
 								var price= $("#price").val();
 								var photo= $("#photo").val();
+
+								var tags=[];
+								$(".tag").each(function(){
+								   if($(this).is(":checked")){
+									  tags.push($(this).val()); 
+								   }	
+								})
+								tags = tags.toString();
+								//console.log(tags);
 								var category= $("#category").val();
 								var sdesc= $("#sdesc").val();
 								var ldesc= $("#ldesc").val();
-							//	document.write(name+price+photo+category+desc);
-							   // console.log(".........................");
+							   	if(name != '' && tags.length !==0){	
 								$.ajax({
 									url : "addproduct.php",
 									type : "POST",
@@ -235,16 +236,43 @@
 										pldesc : ldesc
 										},  
 									success : function(data){
-										alert(data);
+										//alert(data);
 										if(data==1){
-											alert("success");
+											alert("successfully added product");
+											loadproduct();
 										} else {
-											alert("error");
+											alert("some thing went wrong");
 
-						}
-					}
-								});	
+						                }
+					                }
+								});
+							    } else {
+									alert("All feilds Are required");
+								}	
 							});
+                         // delete data from  database
+                         $(document).on("click", ".delete-data", function(){
+                          // alert("iam delete butoon");
+						  if(confirm("DO YOU REALLY WANT TO DELETE THIS PRODUCT ??")){
+							  var productId= $(this).data("id");
+							  var element=this;
+							 // alert(productId);
+							 $.ajax({
+								 url : "deleteproduct.php",
+								 type : "POST",
+								 data : {id : productId},
+								 success : function(data){
+                                     if(data==1){
+										 $(element).closest("tr").fadeOut();
+									 } else {
+										 alert("WE CON'T DELETE THIS RECORD ");
+									 }
+								 }
+							 })
+						  }
+						 });
+            
+
 						});
 					</script>
 
