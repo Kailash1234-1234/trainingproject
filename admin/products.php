@@ -286,14 +286,13 @@ require 'header.php';
 										}
 								});	
 							});
-
 							 // delete data from  database
 							 $(document).on("click", ".delete-data", function(){
                           // alert("iam delete butoon");
 						  if(confirm("DO YOU REALLY WANT TO DELETE THIS PRODUCT ??")){
 							  var productId= $(this).data("id");
 							  var element=this;
-							 // alert(productId);
+							 // console.log(productId);
 							 $.ajax({
 								 url : "deleteproduct.php",
 								 type : "POST",
@@ -306,6 +305,7 @@ require 'header.php';
 									 }
 								 }
 							 })
+
 						  }
 						 });
 						});
