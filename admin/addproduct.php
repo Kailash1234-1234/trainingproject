@@ -5,7 +5,7 @@ require 'config.php';
   $name=$_POST["pname"];
   $price=$_POST["pprice"];
   $photo=$_POST["pphoto"];
-//   echo $photo;
+  echo $photo;
   $category=$_POST["pcategory"];
   $tags=$_POST["tags"];
   $sdesc=$_POST["psdesc"];

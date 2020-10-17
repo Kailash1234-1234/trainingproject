@@ -169,7 +169,7 @@ require 'header.php';
 										while ($row = mysqli_fetch_assoc($result)) {
 											?>
 											
-										<option value="<?php echo $row['category_id']; ?>">
+										<option value="<?php echo $row['name']; ?>">
 										
 										<?php echo $row['name']; ?></option>
 
@@ -245,7 +245,7 @@ require 'header.php';
 								//alert("kailash chandra yadav");
 								e.preventDefault();
 								var id= $("#pid").val();
-								console.log(id);
+								//console.log(id);
 								var name= $("#name").val();
 								var price= $("#price").val();
 								var tags=[];
@@ -258,6 +258,7 @@ require 'header.php';
                                  tags=tags.toString();
 								//  console.log(tags);
 								var photo= $("#photo").val();
+								// alert(phot0);
 								var category= $("#category").val();
 								var sdesc= $("#sdesc").val();
 								var ldesc= $("#ldesc").val();
