@@ -8,7 +8,7 @@ if (isset($_POST['action'])) {
     }
     if (isset($_POST['tag'])) {
         $tag = implode("','", $_POST['tag']);
-        $sql.="AND name IN('".$tag."')";
+        $sql.="AND tags IN('".$tag."')";
     }
     $result = $con->query($sql);
     $output= '<ul class="aa-product-catg" id="result">';
@@ -17,10 +17,10 @@ if (isset($_POST['action'])) {
           $output.='<li>
           <figure>
             <a class="aa-product-img" href="#"><img src="image/'.$row["image"].'" style="height:300px;" alt="polo shirt img"></a>
-            <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+            <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
             <figcaption>
               <h4 class="aa-product-title"><a href="#">'.$row["name"].'</a></h4>
-              <h4 class="aa-product-title" style="color:green"><i>'.$row["tags"].'</i></h4>
+              <h4 class="aa-product-title" style="color:green"> <i>'.$row["tags"].'</i> </h4>
               <span class="aa-product-price">$ '.$row["price"].'</span>
               <span class="aa-product-price"><del>$'. $res=($row["price"]*20/100).'</del>&nbsp;&nbsp;<b>20% OFF</b></span>
               <p class="aa-product-descrip">'.$row["long_desc"].'</p>

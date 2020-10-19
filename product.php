@@ -134,40 +134,59 @@
               </div>
               <!-- / logo  -->
                <!-- cart box -->
-              <div class="aa-cartbox">
+               <div class="aa-cartbox">
+              <?php
+                    require 'admin/config.php';
+                    $sql = "SELECT * FROM cart";
+                    $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                  ?>
                 <a class="aa-cart-link" href="#">
                   <span class="fa fa-shopping-basket"></span>
                   <span class="aa-cart-title">SHOPPING CART</span>
-                  <span class="aa-cart-notify">2</span>
+                 <?php 
+                     $quantity=0;
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row=$result->fetch_assoc()) {
+                            $quantity=$quantity+$row["pqty"];
+                        } ?>
+                        <span class="aa-cart-notify"><?php echo $quantity ?></span>
+                        <?php
+                    }
+                  ?>
+                 
                 </a>
                 <div class="aa-cartbox-summary">
-                  <ul>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-1.jpg" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>                    
-                    <li>
+                    <ul>
+                      <?php
+                          $sql = "SELECT * FROM cart";
+                          $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                          $total=0;
+                          if (mysqli_num_rows($result) > 0) {
+                            while ($row=$result->fetch_assoc()) {
+                            ?>
+                        <li>
+                          <a class="aa-cartbox-img" href="#"><img src="image/<?php echo $row["pimage"]; ?>" alt="img"></a>
+                          <div class="aa-cartbox-info">
+                            <h4><a href="#"><?php echo $row["product_name"] ?> </a></h4>
+                              <p><?php echo $row["pqty"] ?> x <?php echo $row["pprice"] ?></p>
+                          </div>
+                          <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                        </li>
+                              <?php 
+                               $total =$total+$row["pqty"]*$row["pprice"];
+
+                              }
+                            } 
+                            ?>
                       <span class="aa-cartbox-total-title">
                         Total
                       </span>
                       <span class="aa-cartbox-total-price">
-                        $500
+                       $ &nbsp;&nbsp;<?php echo $total ?>
                       </span>
                     </li>
                   </ul>
-                  <a class="aa-cartbox-checkout aa-primary-btn" href="#">Checkout</a>
+                  <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.php">Checkout</a>
                 </div>
               </div>
               <!-- / cart box -->
@@ -373,16 +392,35 @@
                 <!-- start single product item -->
                 <?php
                     include 'admin/config.php';
-                    $sql= "SELECT * FROM products";
+                    $limit_per_page=16;
+                    $page="";
+                    if (isset($_POST["page_no"])) {
+                        $page= $_POST["page_no"];
+
+                    } else {
+                       $page = 1;
+                    }
+                    $offset = ($page-1)* $limit_per_page;
+
+                $sql= "SELECT * FROM products limit {$offset},{$limit_per_page}";
                     $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
                     $output="";
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                           ?>
-                          <li>
+                         <li>
                           <figure>
                             <a class="aa-product-img" href="#"><img src="image/<?php echo $row["image"]; ?>" style="height:300px;" alt="polo shirt img"></a>
-                            <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                            <form action="" class="form-submit">
+                            <input type="hidden" class="pid"  value="<?= $row["product_id"]?>">
+                            <input type="hidden" class="pname"  value="<?= $row["name"]?>">
+                            <input type="hidden" class="cat_name"  value="<?= $row["category_id"]?>">
+                            <input type="hidden" class="pimage"  value="<?= $row["image"]?>">
+                            <input type="hidden" class="pprice"  value="<?= $row["price"]?>">
+                            <input type="hidden" class="ptag"  value="<?= $row["tags"]?>">
+                            <input type="hidden" class="pdesc"  value="<?= $row["long_desc"]?>">
+                              <a class="aa-add-card-btn addItemBtn"  href="action1.php?id=<?= $row['product_id'];?>" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                            </form>
                             <figcaption>
                               <h4 class="aa-product-title"><a href="#"><?php echo $row["name"]; ?></a></h4>
                               <h4 class="aa-product-title" style="color:green"><i><?php echo $row["tags"]; ?></i></h4>
@@ -400,6 +438,7 @@
                           <span class="aa-badge aa-sold-out" href="#">SALE!</span>
                           <?php endif; ?>
                         </li>
+                        
                         <!-- start single product item -->
                         <?php
                         }
@@ -409,9 +448,7 @@
                         echo "data not found"; 
                     }
                     ?>
-                                    <!-- start single product item -->                                
-                 </ul>
-              <!-- quick view modal -->                  
+                </ul>           
               <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">                      
@@ -494,24 +531,27 @@
               </div>
               <!-- / quick view modal -->   
             </div>
-            <div class="aa-product-catg-pagination">
+            <div class="aa-product-catg-pagination" >
               <nav>
                 <ul class="pagination">
-                  <li>
-                    <a href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
+                    <?php $sqldata="select * from products";
+                    $records= mysqli_query($con, $sqldata) or die("query failed");
+                    $total_records=mysqli_num_rows($records);
+                  
+                    ?>
+                   
+                    <?php
+                    $total_pages = ceil($total_records/$limit_per_page);
+                   
+                    for ($i=1; $i < $total_pages; $i++) { 
+                     ?>
+                      <li>
+                    <a href="#" id="<?php echo $i; ?>"> <?php echo $i; ?>
                     </a>
                   </li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li>
-                    <a href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
+                     <?php
+                    }
+                    ?>
                 </ul>
               </nav>
             </div>
@@ -527,7 +567,7 @@
                     <div class="aa-sidebar-widget">
                       <h3>Category</h3>
                       <?php
-                          $sql= "SELECT * FROM products ORDER BY product_id ASC";
+                          $sql= "SELECT distinct category_id FROM products ORDER BY product_id ASC";
                           $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED"); 
                       if (mysqli_num_rows($result) > 0) {
                             ?>
@@ -535,7 +575,7 @@
                              <?php
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
-                         <li> <input type="checkbox" id="categoryid" class="filter_check" value="<?php echo $row["category_id"]; ?>" >	<?php echo $row['category_id']; ?></li>
+                         <li> <input type="checkbox" id="categoryid" class="filter_check" value="<?php echo $row["category_id"]; ?>" >	<?php echo $row['category_id']; ?> </li>
                                 <?php
                             }
                             ?>
@@ -552,14 +592,15 @@
               <h3>Tags</h3>
                 <div class="tag-cloud">
                   <?php
-									     $sql= "SELECT DISTINCT (name) FROM products ORDER BY product_id ASC";
+									     $sql= "SELECT DISTINCT (tags) FROM products ORDER BY product_id ASC";
 									     $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
 									     if (mysqli_num_rows($result) > 0) { ?>
                         <ul class="aa-catg-nav">
                         <?php
 										      while ($row = mysqli_fetch_assoc($result)) {
 											   ?>
-                         <li>  <input type="checkbox" id="tagid" class="filter_check" value="<?php echo $row['name']; ?>"> &nbsp;&nbsp;<?php echo $row['name']; ?></li>
+                         <li>  <input type="checkbox" id="tagid" class="filter_check" value="<?php echo $row['tags']; ?>"> &nbsp;&nbsp;<?php echo $row['tags']; ?>
+                         </li>
                           <?php
 							      	  }
 							      } else {
@@ -673,7 +714,7 @@
       //alert("=============");
       var action = 'data';
       var category = get_filter_text('categoryid');
-      alert(category);
+      //alert(category);
       var tag = get_filter_text('tagid');
       $.ajax({
         url : 'action.php',
@@ -684,15 +725,56 @@
         }
       })
     })
-   alert("hello i am alert");
+  // alert("hello i am alert");
    function get_filter_text(text_id){
      var filterData = [];
      $('#'+text_id+':checked').each(function(){
        filterData.push($(this).val());
-     });
+     })
      return filterData;
    }
+
+   // pagination 
+
+   function loadpage(page){
+       $.ajax({
+         url : "product.php",
+         type : "POST",
+         data : {page_no : page},
+         success : function(data){
+          $("#result").html(data);
+         }
+       });
+   };
+    loadpage(page_id);
+   // pagination code
+   $(document).on("click","#pagination a",function(e){
+     e.preventDefault();
+     var page_id = $(this).attr("id");
+     loadpage(page_id); 
+   })
+
+
+   //
+   $(".addItemBtn").click(function(e){
+     e.preventDefault();
+     var $form = $(this).closest(".form-submit");
+    //  var pid = $(".pid").val();
+    //  alert(pid);
+    //  var pname = $form.find(".pname").val();
+    //  var pcat = $form.find(".pcat_name").val();
+    //  var ptag = $form.find(".ptag").val();
+    //  var pimage = $form.find(".pimage").val();
+    //  var pprice = $form.find(".pprice").val();
+     $.ajax({
+       url : "action1.php",
+       type : "GET",
+       data : {pid :pid ,pname:pname,pcat:pcat,ptag:ptag,pimage:pimage,pprice:pprice},
+       success : function(data){
+         $(".added").html(data);
+       }
+     })
+   })
  });
- 
  </script>
 <?php include 'footer.php'?>

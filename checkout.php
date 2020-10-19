@@ -16,7 +16,6 @@
    </div>
   </section>
   <!-- / catg header banner section -->
-
  <!-- Cart view section -->
  <section id="checkout">
    <div class="container">
@@ -280,7 +279,12 @@
                 <div class="checkout-right">
                   <h4>Order Summary</h4>
                   <div class="aa-order-summary-area">
-                    <table class="table table-responsive">
+                  <?php
+                      require 'admin/config.php';
+                      $sql = "SELECT * FROM cart";
+                      $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                    ?>
+                       <table class="table table-responsive">
                       <thead>
                         <tr>
                           <th>Product</th>
@@ -288,31 +292,40 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                        $total=0;
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row=$result->fetch_assoc()) {
+                                ?>
                         <tr>
-                          <td>T-Shirt <strong> x  1</strong></td>
-                          <td>$150</td>
+                          <td><?php echo $row["product_name"] ?> <strong> x &nbsp; &nbsp;<?php  echo $row["pqty"] ?>
+                           </strong>
+                           </td>
+                                <?php 
+                                   $price=$row["pqty"]*$row["pprice"];
+                                ?>
+                          <td>
+                                <?php echo $price; ?>
+                          </td>
                         </tr>
-                        <tr>
-                          <td>Polo T-Shirt <strong> x  1</strong></td>
-                          <td>$250</td>
-                        </tr>
-                        <tr>
-                          <td>Shoes <strong> x  1</strong></td>
-                          <td>$350</td>
-                        </tr>
-                      </tbody>
+                                <?php 
+                                 $total=$total+$price;
+                            }
+                        }
+                        ?>
+                       </tbody>
                       <tfoot>
                         <tr>
                           <th>Subtotal</th>
-                          <td>$750</td>
+                          <td><?php echo $total; ?></td>
                         </tr>
                          <tr>
                           <th>Tax</th>
-                          <td>$35</td>
+                          <td><?php echo $tax=200; ?></td>
                         </tr>
                          <tr>
                           <th>Total</th>
-                          <td>$785</td>
+                          <td><?php echo $grandtotal=$total+$tax;  ?></td>
                         </tr>
                       </tfoot>
                     </table>
@@ -335,4 +348,4 @@
  </section>
  <!-- / Cart view section -->
 
- <?php include 'footer.php'; ?>
+ <?php require 'footer.php'; ?>

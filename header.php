@@ -135,35 +135,54 @@
               <!-- / logo  -->
                <!-- cart box -->
               <div class="aa-cartbox">
+              <?php
+                    require 'admin/config.php';
+                    $sql = "SELECT * FROM cart";
+                    $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                  ?>
                 <a class="aa-cart-link" href="#">
                   <span class="fa fa-shopping-basket"></span>
                   <span class="aa-cart-title">SHOPPING CART</span>
-                  <span class="aa-cart-notify">2</span>
+                 <?php 
+                     $quantity=0;
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row=$result->fetch_assoc()) {
+                            $quantity=$quantity+$row["pqty"];
+                        } ?>
+                        <span class="aa-cart-notify"><?php echo $quantity ?></span>
+                        <?php
+                    }
+                  ?>
+                 
                 </a>
                 <div class="aa-cartbox-summary">
-                  <ul>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>
-                    <li>
-                      <a class="aa-cartbox-img" href="#"><img src="img/woman-small-1.jpg" alt="img"></a>
-                      <div class="aa-cartbox-info">
-                        <h4><a href="#">Product Name</a></h4>
-                        <p>1 x $250</p>
-                      </div>
-                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                    </li>                    
-                    <li>
+                    <ul>
+                      <?php
+                          $sql = "SELECT * FROM cart";
+                          $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                          $total=0;
+                          if (mysqli_num_rows($result) > 0) {
+                            while ($row=$result->fetch_assoc()) {
+                            ?>
+                        <li>
+                          <a class="aa-cartbox-img" href="#"><img src="image/<?php echo $row["pimage"]; ?>" alt="img"></a>
+                          <div class="aa-cartbox-info">
+                            <h4><a href="#"><?php echo $row["product_name"] ?> </a></h4>
+                              <p><?php echo $row["pqty"] ?> x <?php echo $row["pprice"] ?></p>
+                          </div>
+                          <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                        </li>
+                              <?php 
+                               $total =$total+$row["pqty"]*$row["pprice"];
+
+                              }
+                            } 
+                            ?>
                       <span class="aa-cartbox-total-title">
                         Total
                       </span>
                       <span class="aa-cartbox-total-price">
-                        $500
+                       $ &nbsp;&nbsp;<?php echo $total ?>
                       </span>
                     </li>
                   </ul>

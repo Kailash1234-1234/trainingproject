@@ -159,7 +159,7 @@ require 'header.php';
 									<label>Category </label>
 									<?php
 									include 'config.php';
-									$sql= "SELECT * FROM categories";
+									$sql= "SELECT distinct name FROM categories";
 									$result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
 									
 									if (mysqli_num_rows($result) > 0) {
