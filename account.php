@@ -1,4 +1,17 @@
-<?php include 'header.php'; ?> 
+<?php
+
+/**
+ * Templet File Doc Comment
+ * 
+ * PHP version /
+ * 
+ * @category Tenplete_Class
+ * @package  Templete_Class
+ * @author   Author <author@domain.com>
+ * @license  http://opensource.org/MIT MIT License
+ * @link     http://localhost/
+ */
+ require 'header.php'; ?> 
  
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">

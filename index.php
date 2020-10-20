@@ -166,77 +166,71 @@ require 'header.php'; ?>
                 <!-- start prduct navigation -->
 
                 <?php
-           require 'admin/config.php';
-        ?>         
-         
-         <ul class="nav nav-tabs aa-products-tab">
+                require 'admin/config.php';
+                ?>         
+                <ul class="nav nav-tabs aa-products-tab">
                       <?php
-                          $sql= "SELECT distinct category_id FROM products ORDER BY product_id ASC";
-                          $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED"); 
-                          if (mysqli_num_rows($result) > 0) {
+                        $sql= "SELECT distinct category_id FROM products ORDER BY product_id ASC";
+                        $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED"); 
+                        if (mysqli_num_rows($result) > 0) {
                             ?>
-                             <ul class="aa-catg-nav">
-                             <?php
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                  if ($row["category_id"]=="Men") {
+                          <ul class="aa-catg-nav">
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                if ($row["category_id"]=="Men") {
                                     ?>
-                                  <li><a href="#men" data-toggle="tab"><?php echo $row["category_id"]; ?></a></li>
-                                <?php
-                                  }
-                                  if ($row["category_id"]=="Kids") {
+                                <li><a href="#men" data-toggle="tab"><?php echo $row["category_id"]; ?></a></li>
+                                    <?php
+                                }
+                                if ($row["category_id"]=="Kids") {
                                     ?>
                                   <li><a href="#kids" data-toggle="tab"><?php echo $row["category_id"]; ?></a></li>
-                                <?php
-                                  }
-                                  if ($row["category_id"]=="Women") {
+                                    <?php
+                                }
+                                if ($row["category_id"]=="Women") {
                                     ?>
                                   <li><a href="#women" data-toggle="tab"><?php echo $row["category_id"]; ?></a></li>
-                   
-                                <?php
-                                  }
-                                  if ($row["category_id"]=="Shop") {
+                                    <?php
+                                }
+                                if ($row["category_id"]=="Shop") {
                                     ?>
                                   <li><a href="#shop" data-toggle="tab"><?php echo $row["category_id"]; ?></a></li>
-                   
-                                <?php
-                                  }
-                                  if ($row["category_id"]=="Electronics") {
+                                    <?php
+                                }
+                                if ($row["category_id"]=="Electronics") {
                                     ?>
                                   <li><a href="#electronics" data-toggle="tab"><?php echo $row["category_id"]; ?></a></li>
-                   
-                                <?php
-                                  }
+                                    <?php
+                                }
                             }
                             ?>
                          </ul>
-                          <?php
-                      } else {
-                          echo "data not found"; 
-                      }
+                             <?php
+                        } else {
+                            echo "data not found"; 
+                        }
                         ?>
-               
-                   
-                  </ul>
-
-
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                    <!-- Start men product category -->
-                    <div class="tab-pane fade in active" id="men">
+                </ul>
+                 <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane fade in active">
                       <ul class="aa-product-catg">   
                           <?php
-                            include 'admin/config.php';
+                            require 'admin/config.php';
                             $sql= "SELECT * FROM products ";
                             $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
                             $output="";
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                 if ($row["category_id"]=="Men") {
-                                  ?>
-                                <li>
+                                    ?>
+                                  <li>
                                   <figure>
                                     <a class="aa-product-img" href="#"><img src="image/<?php echo $row["image"]; ?>" style="height:300px;" alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    <form action="" class="form-submit">
+                           
+                              <a class="aa-add-card-btn addItemBtn"  href="action1.php?id=<?= $row['product_id'];?>" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                            </form>
+                                    
                                     <figcaption>
                                       <h4 class="aa-product-title"><a href="#"><?php echo $row["name"]; ?></a></h4>
                                       <h4 class="aa-product-title" style="color:green"><i><?php echo $row["tags"]; ?></i></h4>
@@ -250,21 +244,64 @@ require 'header.php'; ?>
                                     <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
                                   </div>
                                   <!-- product badge -->
-                                  <?php if($desc=($row["price"]*20)/100 ) : ?> 
-                                  <span class="aa-badge aa-sale" href="#">SALE!</span>
-                                  <?php endif; 
-                                 
-                                  ?>
-
-                                </li>
-
-                                <!-- start single product item -->
-                                <?php
+                                    <?php if($desc=($row["price"]*20)/100 ) : ?> 
+                                    <span class="aa-badge aa-sale" href="#">SALE!</span>
+                                    <?php endif; ?>
+                                  </li>
+                                  <!-- start single product item -->
+                                    <?php
                                 }
-                                }
-                              // mysqli_close($con);
+                                  // mysqli_close($con);
                                 echo $output;
-                          } else {
+                            } else {
+                                echo "data not found"; 
+                            }
+                            ?>                        
+                      </ul>
+                      <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                    </div>
+                    <!-- Start men product category -->
+                    <div class="tab-pane fade in active" id="men">
+                      <ul class="aa-product-catg">   
+                          <?php
+                            require 'admin/config.php';
+                            $sql= "SELECT * FROM products ";
+                            $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                            $output="";
+                            if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                if ($row["category_id"]=="Men") {
+                                    ?>
+                                <li>
+                                  <figure>
+                                    <a class="aa-product-img" href="#"><img src="image/<?php echo $row["image"]; ?>" style="height:300px;" alt="polo shirt img"></a>
+                                    <form action="" class="form-submit">
+                                    <a class="aa-add-card-btn addItemBtn"  href="action1.php?id=<?= $row['product_id'];?>" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    </form>
+                                    <figcaption>
+                                      <h4 class="aa-product-title"><a href="#"><?php echo $row["name"]; ?></a></h4>
+                                      <h4 class="aa-product-title" style="color:green"><i><?php echo $row["tags"]; ?></i></h4>
+                                      <span class="aa-product-price">$<?php  $desc=($row["price"]*20)/100; echo $res=$row["price"]-$desc; ?></span><span class="aa-product-price"><del>$<?php echo $row["price"]; ?></del>&nbsp;&nbsp;<b>20% OFF</b></span>
+                                      <p class="aa-product-descrip"><?php echo $row["long_desc"]; ?></p>
+                                    </figcaption>
+                                  </figure>                    
+                                  <div class="aa-product-hvr-content">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
+                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                                  </div>
+                                  <!-- product badge -->
+                                        <?php if($desc=($row["price"]*20)/100 ) : ?> 
+                                        <span class="aa-badge aa-sale" href="#">SALE!</span>
+                                            <?php endi ?>
+                                </li>
+                                <!-- start single product item -->
+                                            <?php
+                                        }
+                                }
+                                // mysqli_close($con);
+                                echo $output;
+                            } else {
                                 echo "data not found"; 
                             }
                             ?>                        
@@ -277,18 +314,20 @@ require 'header.php'; ?>
                       <ul class="aa-product-catg">
                        
                         <?php
-                            include 'admin/config.php';
-                            $sql= "SELECT * FROM products ";
-                            $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
-                            $output="";
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                 if ($row["category_id"]=="Kids") {
-                                  ?>
+                        require 'admin/config.php';
+                        $sql= "SELECT * FROM products ";
+                        $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                        $output="";
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                if ($row["category_id"]=="Kids") {
+                                    ?>
                                 <li>
                                   <figure>
                                     <a class="aa-product-img" href="#"><img src="image/<?php echo $row["image"]; ?>" style="height:300px;" alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    <form action="" class="form-submit">
+                                      <a class="aa-add-card-btn addItemBtn"  href="action1.php?id=<?= $row['product_id'];?>" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    </form>
                                     <figcaption>
                                       <h4 class="aa-product-title"><a href="#"><?php echo $row["name"]; ?></a></h4>
                                       <h4 class="aa-product-title" style="color:green"><i><?php echo $row["tags"]; ?></i></h4>
@@ -302,21 +341,20 @@ require 'header.php'; ?>
                                     <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
                                   </div>
                                   <!-- product badge -->
-                                  <?php if($desc=($row["price"]*20)/100 ) : ?> 
-                                  <span class="aa-badge aa-sale" href="#">SALE!</span>
-                                  <?php endif;  ?>
+                                    <?php if($desc=($row["price"]*20)/100 ) : ?> 
+                                    <span class="aa-badge aa-sale" href="#">SALE!</span>
+                                    <?php endif;  ?>
                                 </li>
                                 <!-- start single product item -->
-                                <?php
-                                     }
+                                    <?php
                                 }
+                            }
                               // mysqli_close($con);
                                 echo $output;
-                          } else {
+                        } else {
                                 echo "data not found"; 
-                            }
-                            ?>             
-                                             
+                        }
+                        ?>                               
                       </ul>
                       <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
                     </div>
@@ -325,18 +363,20 @@ require 'header.php'; ?>
                     <div class="tab-pane fade" id="shop">
                        <ul class="aa-product-catg">
                        <?php
-                            include 'admin/config.php';
-                            $sql= "SELECT * FROM products ";
-                            $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
-                            $output="";
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                 if ($row["category_id"]=="Shop") {
-                                  ?>
+                        require 'admin/config.php';
+                        $sql= "SELECT * FROM products ";
+                        $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                        $output="";
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                if ($row["category_id"]=="Shop") {
+                                    ?>
                                 <li>
                                   <figure>
                                     <a class="aa-product-img" href="#"><img src="image/<?php echo $row["image"]; ?>" style="height:300px;" alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    <form action="" class="form-submit">
+                                      <a class="aa-add-card-btn addItemBtn"  href="action1.php?id=<?= $row['product_id'];?>" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    </form>
                                     <figcaption>
                                       <h4 class="aa-product-title"><a href="#"><?php echo $row["name"]; ?></a></h4>
                                       <h4 class="aa-product-title" style="color:green"><i><?php echo $row["tags"]; ?></i></h4>
@@ -350,24 +390,20 @@ require 'header.php'; ?>
                                     <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
                                   </div>
                                   <!-- product badge -->
-                                  <?php if($desc=($row["price"]*20)/100 ) : ?> 
-                                  <span class="aa-badge aa-sale" href="#">SALE!</span>
-                                  <?php endif; 
-                                 
-                                  ?>
-
+                                    <?php if($desc=($row["price"]*20)/100 ) : ?> 
+                                    <span class="aa-badge aa-sale" href="#">SALE!</span>
+                                    <?php endif; ?>
                                 </li>
-
                                 <!-- start single product item -->
-                                <?php
+                                    <?php
                                 }
-                                }
-                              // mysqli_close($con);
-                                echo $output;
-                          } else {
-                                echo "data not found"; 
                             }
-                            ?>    
+                              // mysqli_close($con);
+                            echo $output;
+                        } else {
+                                echo "data not found"; 
+                        }
+                        ?>    
                         
                         <!-- start single product item -->                     
                       </ul>
@@ -378,18 +414,20 @@ require 'header.php'; ?>
                     <div class="tab-pane fade" id="electronics">
                        <ul class="aa-product-catg">
                        <?php
-                            include 'admin/config.php';
-                            $sql= "SELECT * FROM products ";
-                            $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
-                            $output="";
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                 if ($row["category_id"]=="Electronics") {
-                                  ?>
+                        require 'admin/config.php';
+                        $sql= "SELECT * FROM products ";
+                        $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                        $output="";
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                if ($row["category_id"]=="Electronics") {
+                                    ?>
                                 <li>
                                   <figure>
                                     <a class="aa-product-img" href="#"><img src="image/<?php echo $row["image"]; ?>" style="height:300px;" alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    <form action="" class="form-submit">                           
+                                      <a class="aa-add-card-btn addItemBtn"  href="action1.php?id=<?= $row['product_id'];?>" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                    </form>                                   
                                     <figcaption>
                                       <h4 class="aa-product-title"><a href="#"><?php echo $row["name"]; ?></a></h4>
                                       <h4 class="aa-product-title" style="color:green"><i><?php echo $row["tags"]; ?></i></h4>
@@ -403,24 +441,20 @@ require 'header.php'; ?>
                                     <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span data-id="<?php echo $row["product_id"]; ?>" class="fa fa-search"></span></a>                            
                                   </div>
                                   <!-- product badge -->
-                                  <?php if($desc=($row["price"]*20)/100 ) : ?> 
-                                  <span class="aa-badge aa-sale" href="#">SALE!</span>
-                                  <?php endif; 
-                                 
-                                  ?>
-
+                                    <?php if($desc=($row["price"]*20)/100 ) : ?> 
+                                    <span class="aa-badge aa-sale" href="#">SALE!</span>
+                                    <?php endif; ?>
                                 </li>
-
                                 <!-- start single product item -->
-                                <?php
+                                    <?php
                                 }
-                                }
+                            }
                               // mysqli_close($con);
                                 echo $output;
-                          } else {
+                        } else {
                                 echo "data not found"; 
-                            }
-                            ?>    
+                        }
+                        ?>    
                         
                         <!-- start single product item -->                     
                       </ul>
@@ -438,13 +472,13 @@ require 'header.php'; ?>
                             <!-- Modal view slider -->
                             <div class="col-md-6 col-sm-6 col-xs-12">  
                             <?php 
-                                 $sql= "select * from products";
-                                 $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
-                                 $output="";
-                                 if (mysqli_num_rows($result) > 0) {
-                                     while ($row = mysqli_fetch_assoc($result)) {
-                                         if ($row["product_id"]=="5001") {
-                              ?>                            
+                            $sql= "select * from products";
+                            $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                            $output="";
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    if ($row["product_id"]=="5001") {
+                                        ?>                            
                               <div class="aa-product-view-slider">                                
                                 <div class="simpleLens-gallery-container" id="demo-1">
                                   <div class="simpleLens-container">
@@ -515,10 +549,11 @@ require 'header.php'; ?>
                              
                             </div>
                           </div>
-                           <?php
-                                     }}
+                                        <?php
                                     }
-                              ?>
+                                }
+                            }
+                            ?>
                         </div>                        
                       </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->

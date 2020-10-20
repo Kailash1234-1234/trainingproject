@@ -26,6 +26,11 @@
            <div class="cart-view-table">
              <form action="">
                <div class="table-responsive">
+               <?php
+                  require 'admin/config.php';
+                  $sql = "SELECT * FROM cart";
+                  $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                ?>
                   <table class="table">
                     <thead>
                       <tr>
@@ -37,31 +42,29 @@
                         <th>Total</th>
                       </tr>
                     </thead>
+                    <div id="result"></div>
                     <tbody>
+                    <?php
+                    $total=0;
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row=$result->fetch_assoc()) {
+                            ?>
                       <tr>
                         <td><a class="remove" href="#"><fa class="fa fa-close"></fa></a></td>
-                        <td><a href="#"><img src="img/man/polo-shirt-1.png" alt="img"></a></td>
-                        <td><a class="aa-cart-title" href="#">Polo T-Shirt</a></td>
-                        <td>$250</td>
-                        <td><input class="aa-cart-quantity" type="number" value="1"></td>
-                        <td>$250</td>
+                        <td><a href="#"><img src="image/<?php echo $row['pimage']; ?>" alt="img"></a></td>
+                        <td><a class="aa-cart-title" href="#"><?php echo $row['product_name']; ?></a></td>
+                        <td><?php echo $row['pprice']; ?></td>
+                        <td><input class="aa-cart-quantity" type="number" id="qty" value="<?php echo $row['pqty']; ?>">
+                        <input class="aa-cart-quantity" type="hidden" id="pid" value="<?php echo $row['pid']; ?>"></td>
+                        <td><?php echo $price = $row["pqty"]*$row['pprice']; ?></td>
                       </tr>
-                      <tr>
-                        <td><a class="remove" href="#"><fa class="fa fa-close"></fa></a></td>
-                        <td><a href="#"><img src="img/man/polo-shirt-2.png" alt="img"></a></td>
-                        <td><a class="aa-cart-title" href="#">Polo T-Shirt</a></td>
-                        <td>$150</td>
-                        <td><input class="aa-cart-quantity" type="number" value="1"></td>
-                        <td>$150</td>
-                      </tr>
-                      <tr>
-                        <td><a class="remove" href="#"><fa class="fa fa-close"></fa></a></td>
-                        <td><a href="#"><img src="img/man/polo-shirt-3.png" alt="img"></a></td>
-                        <td><a class="aa-cart-title" href="#">Polo T-Shirt</a></td>
-                        <td>$50</td>
-                        <td><input class="aa-cart-quantity" type="number" value="1"></td>
-                        <td>$50</td>
-                      </tr>
+                            <?php 
+                            $total = $total+$price;
+                        }
+                       
+                    }
+                    ?>
+
                       <tr>
                         <td colspan="6" class="aa-cart-view-bottom">
                           <div class="aa-cart-coupon">
@@ -82,15 +85,15 @@
                  <tbody>
                    <tr>
                      <th>Subtotal</th>
-                     <td>$450</td>
+                     <td>$<?php echo $total; ?></td>
                    </tr>
                    <tr>
                      <th>Total</th>
-                     <td>$450</td>
+                     <td>$<?php echo $total; ?></td>
                    </tr>
                  </tbody>
                </table>
-               <a href="#" class="aa-cart-view-btn">Proced to Checkout</a>
+               <a href="checkout.php" class="aa-cart-view-btn">Proced to Checkout</a>
              </div>
            </div>
          </div>
@@ -98,6 +101,27 @@
      </div>
    </div>
  </section>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+  $(document).ready(function(){
+    var pqty= $("#qty").val();
+    var pid= $("#pid").val();
+    function loadpage(){
+       $.ajax({
+         url : "updateqty.php",
+         type : "POST",
+         data : {pqty:pqty, pid:pid},
+         success : function(data){
+           //alert(data);
+          $("#result").html(data);
+         }
+       });
+   };
+    loadpage();
+   })
+ </script>
+
+
  <!-- / Cart view section -->
 
 

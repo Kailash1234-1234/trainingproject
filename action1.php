@@ -1,4 +1,15 @@
 <?php
+/**
+ * Templet File Doc Comment
+ * 
+ * PHP version /
+ * 
+ * @category Tenplete_Class
+ * @package  Templete_Class
+ * @author   Author <author@domain.com>
+ * @license  http://opensource.org/MIT MIT License
+ * @link     http://localhost/
+ */
 require 'admin/config.php';
 
 $id= $_GET["id"];
@@ -21,12 +32,12 @@ if (mysqli_num_rows($result) > 0) {
         $sql = "INSERT INTO cart(`pid`, `product_name`, `pprice`, `pimage`, `pqty`, `ptag`,`pcat`,`totalprice`) VALUES ('{$pid}', '{$name}','{$price}','{$image}','{$pqty}','{$tags}','{$pcat}','{$totalprice}')";
         header('location:product.php');
         // $result= mysqli_query($con, $sql) or die($con);
-      if (mysqli_query($con, $sql)) {
-          echo 1;
-      } else {
-          print_r(mysqli_error_list($con));
-      }
-      mysqli_close($con);
+        if (mysqli_query($con, $sql)) {
+            echo 1;
+        } else {
+            print_r(mysqli_error_list($con));
+        }
+        mysqli_close($con);
         
     }
 }

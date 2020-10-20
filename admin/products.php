@@ -12,8 +12,8 @@
  */
 require 'header.php'; 
 ?>
-<?php include('sidebar.php') ?>
-<div id="main-content"> <!-- Main Content Section with everything -->
+  <?php include('sidebar.php') ?>
+ <div id="main-content"> <!-- Main Content Section with everything -->
   <noscript> <!-- Show a notification if the user has disabled javascript -->
       <div class="notification error png_bg">
         <div>
@@ -99,7 +99,6 @@ require 'header.php';
 											</select>
 											<a class="button" href="#">Apply to selected</a>
 										</div>
-			
 										<div class="pagination">
 											<a href="#" title="First Page">&laquo; First</a><a href="#" title="Previous Page">&laquo; Previous</a>
 											<a href="#" class="number" title="1">1</a>
@@ -134,7 +133,6 @@ require 'header.php';
 					</div> <!-- End #tab1 -->
 				</div>
 					<div class="tab-content" id="tab2">
-					
 					<form>
 						<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 						       <p>
@@ -219,14 +217,10 @@ require 'header.php';
 							
 							<div class="clear"></div><!-- End .clear -->
 							
-						</form>
-						
-					</div> <!-- End #tab2 -->        
-					
+						</form>	
+					</div> <!-- End #tab2 -->        	
 				</div> <!-- End .content-box-content -->
-				
 			</div> <!-- End .content-box -->
-			
                     <script>
 						$(document).ready(function(){
 							//load product 
@@ -309,6 +303,47 @@ require 'header.php';
 
 						  }
 						 });
+						 //update product details
+						 $(document).on("click", ".update-data", function(){
+                           alert("iam update butoon");
+						  var productId= $(this).data("editid");
+						  var element=this;
+							 // console.log(productId);
+							 $.ajax({
+								 url : "updateproduct.php",
+								 type : "POST",
+								 data : {editid : productId},
+								 success : function(data){
+									$("#showtable").html(data); 
+								 }
+							 })
+						 });
+                        // update data
+						 $(document).on("click", ".update-data-id", function(){
+                           alert("iam update data");
+						   var productId= $(this).data("editdataid");
+						   var element=this;
+						   
+						  
+						   var ename= $("#ename").val();
+						   var eprice= $("#eprice").val();
+						   var ecategory= $("#ecategory").val();
+						   var etags= $("#etags").val();
+						   var esdesc= $("#esdesc").val();
+						   var eldesc= $("#eldesc").val();
+						   alert(name+price+category);
+							 // console.log(productId);
+							 $.ajax({
+								 url : "updatedetails.php",
+								 type : "POST",
+								 data : {eid : productId, eprice:price, ecategory:category, etag:etags, esdesc:esdesc, eldesc:eldesc},
+								 success : function(data){
+									alert(data); 
+									loadproduct();
+								 }
+							 })
+						 });
+
 						});
 					</script>
 

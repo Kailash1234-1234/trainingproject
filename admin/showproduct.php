@@ -53,7 +53,7 @@ if (mysqli_num_rows($result) > 0) {
        <td>{$row["short_desc"]}</td><td>{$row["long_desc"]}</td>
        <td>
            <!-- Icons -->
-            <a href='#' title='Edit'><img src='resources/images/icons/pencil.png' alt='Edit' /></a>
+            <a href='#' title='Edit'><img class='update-data' data-editid='{$row["product_id"]}' src='resources/images/icons/pencil.png' alt='Edit' /></a>
             <a title='Delete'  ><img class='delete-data'  data-id='{$row["product_id"]}' src='resources/images/icons/cross.png' alt='Delete'  /></a> 
             <a href='#' title='Edit Meta'><img src='resources/images/icons/hammer_screwdriver.png' alt='Edit Meta' /></a>
        </td>
