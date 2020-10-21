@@ -12,7 +12,7 @@
  */
 require 'config.php';
 
-$sql= "SELECT * FROM products";
+$sql= "SELECT * FROM users";
 $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
 $output="";
 if (mysqli_num_rows($result) > 0) {
@@ -20,13 +20,11 @@ if (mysqli_num_rows($result) > 0) {
     <thead>
 		<tr>
 		    <th><input class="check-all" type="checkbox" /></th>
-			<th>Product Id</th>
+			<th>User Id</th>
 			<th>Name</th>
-			<th>Picture</th>
-            <th>Price</th>
-            <th>category</th>
-            <th>Short Description</th>
-            <th>Long Description</th>
+            <th>Email</th>
+            <th>Date Of Birth</th>
+			<th>Address</th>
 			<th>Action</th>
 		</tr>
     </thead>
@@ -56,19 +54,15 @@ if (mysqli_num_rows($result) > 0) {
     <tbody>';
     while ($row = mysqli_fetch_assoc($result)) {
         $output .="<tr>
-       <td><input type='checkbox' /></td>
-       <td>P@{$row["product_id"]}COSS</td><td>{$row["name"]}</td>
-       <td><img style='height:20px; width:60px;' src='resources/images/{$row["image"]}' alt='Edit'></td>
-       <td>{$row["price"]}</td>
-       <td>{$row["category_id"]}</td>
-       <td>{$row["short_desc"]}</td><td>{$row["long_desc"]}</td>
-       <td>
+        <td><input type='checkbox' /></td>
+        <td>C@{$row["id"]}</td><td>{$row["user_name"]}</td><td>C@{$row["email"]}</td><td>{$row["dob"]}</td><td>C@{$row["address"]}</td>
            <!-- Icons -->
-            <a href='#' title='Edit'><img class='update-data' data-editid='{$row["product_id"]}' src='resources/images/icons/pencil.png' alt='Edit' /></a>
-            <a title='Delete'  ><img class='delete-data'  data-id='{$row["product_id"]}' src='resources/images/icons/cross.png' alt='Delete'  /></a> 
+           <td>
+            <a href='#' title='Edit'><img src='resources/images/icons/pencil.png' data-ueid='{$row["id"]}' alt='Edit' /></a>
+            <a title='Delete'  ><img class='delete-user'  data-uid='{$row["id"]}' src='resources/images/icons/cross.png' alt='Delete'  /></a> 
             <a href='#' title='Edit Meta'><img src='resources/images/icons/hammer_screwdriver.png' alt='Edit Meta' /></a>
-       </td>
-   </tr>";
+        </td>
+    </tr>";
     }
     $output.="</tbody></table>";
     mysqli_close($con);

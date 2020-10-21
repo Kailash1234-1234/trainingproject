@@ -1,5 +1,16 @@
 <?php
-include 'config.php';
+/**
+ * Templet File Doc Comment
+ * 
+ * PHP version /
+ * 
+ * @category Tenplete_Class
+ * @package  Templete_Class
+ * @author   Author <author@domain.com>
+ * @license  http://opensource.org/MIT MIT License
+ * @link     http://localhost/
+ */
+require 'config.php';
 
 $sql= "SELECT * FROM categories";
 $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
@@ -47,8 +58,8 @@ if (mysqli_num_rows($result) > 0) {
             <a href='#' title='Edit'><img src='resources/images/icons/pencil.png' alt='Edit' /></a>
             <a title='Delete'  ><img class='delete-cat'  data-cid='{$row["category_id"]}' src='resources/images/icons/cross.png' alt='Delete'  /></a> 
             <a href='#' title='Edit Meta'><img src='resources/images/icons/hammer_screwdriver.png' alt='Edit Meta' /></a>
-       </td>
-   </tr>";
+        </td>
+    </tr>";
     }
     $output.="</tbody></table>";
     mysqli_close($con);

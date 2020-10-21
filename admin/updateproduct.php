@@ -1,6 +1,17 @@
 <?php
- include 'config.php';
- $product_id=$_POST['editid'];
+/**
+ * Templet File Doc Comment
+ * 
+ * PHP version /
+ * 
+ * @category Tenplete_Class
+ * @package  Templete_Class
+ * @author   Author <author@domain.com>
+ * @license  http://opensource.org/MIT MIT License
+ * @link     http://localhost/
+ */
+ require 'config.php';
+ $product_id = $_POST['editid'];
 $sql= "SELECT * FROM products WHERE product_id={$product_id}";
 $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
 $output="<form>";
@@ -34,7 +45,7 @@ if (mysqli_num_rows($result) > 0) {
 					    <textarea class="text-input textarea wysiwyg" id="eldesc" name="textfield" cols="70" rows="5"  value="'.$row['name'].'"></textarea>
                   </p>
                   <p>
-					<input class="button update-data-id" id="editproduct" data-editdataid='.$row["product_id"].' type="button" value="UPDATE DETAILS" />
+					<input class="button editproduct"  data-editdataid='.$row["product_id"].' type="button" value="UPDATE DETAILS" />
 								</p>
                   </p>
                 ';

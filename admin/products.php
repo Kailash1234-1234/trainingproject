@@ -305,34 +305,33 @@ require 'header.php';
 						 });
 						 //update product details
 						 $(document).on("click", ".update-data", function(){
-                           alert("iam update butoon");
-						  var productId= $(this).data("editid");
+                          // alert("iam update butoon");
+						  var eid= $(this).data("editid");
 						  var element=this;
+						  //alert(eid);
 							 // console.log(productId);
 							 $.ajax({
 								 url : "updateproduct.php",
 								 type : "POST",
-								 data : {editid : productId},
+								 data : {editid : eid},
 								 success : function(data){
 									$("#showtable").html(data); 
 								 }
 							 })
 						 });
                         // update data
-						 $(document).on("click", ".update-data-id", function(){
-                           alert("iam update data");
+						 $(document).on("click", ".editproduct", function(){
+                           //alert("iam update data");
 						   var productId= $(this).data("editdataid");
 						   var element=this;
-						   
-						  
 						   var ename= $("#ename").val();
 						   var eprice= $("#eprice").val();
 						   var ecategory= $("#ecategory").val();
 						   var etags= $("#etags").val();
 						   var esdesc= $("#esdesc").val();
 						   var eldesc= $("#eldesc").val();
-						   alert(name+price+category);
-							 // console.log(productId);
+						   alert(productId);
+						  
 							 $.ajax({
 								 url : "updatedetails.php",
 								 type : "POST",
