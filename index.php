@@ -261,7 +261,7 @@ require 'header.php'; ?>
                       <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
                     </div>
                     <!-- Start men product category -->
-                    <div class="tab-pane fade in active" id="men">
+                    <div class="tab-pane fade in " id="men">
                       <ul class="aa-product-catg">   
                           <?php
                             require 'admin/config.php';
@@ -293,7 +293,7 @@ require 'header.php'; ?>
                                   <!-- product badge -->
                                         <?php if($desc=($row["price"]*20)/100 ) : ?> 
                                         <span class="aa-badge aa-sale" href="#">SALE!</span>
-                                            <?php endi ?>
+                                        <?php endif; ?>
                                 </li>
                                 <!-- start single product item -->
                                             <?php

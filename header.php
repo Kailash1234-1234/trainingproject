@@ -136,15 +136,26 @@
                <!-- cart box -->
               <div class="aa-cartbox">
               <?php
-                    require 'admin/config.php';
-                    $sql = "SELECT * FROM cart";
+                /**
+                 * Templet File Doc Comment
+                 * 
+                 * PHP version /
+                 * 
+                 * @category Tenplete_Class
+                 * @package  Templete_Class
+                 * @author   Author <author@domain.com>
+                 * @license  http://opensource.org/MIT MIT License
+                 * @link     http://localhost/
+                 */
+                require 'admin/config.php';
+                $sql = "SELECT * FROM cart";
                     $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
-                  ?>
+                ?>
                 <a class="aa-cart-link" href="#">
-                  <span class="fa fa-shopping-basket"></span>
-                  <span class="aa-cart-title">SHOPPING CART</span>
-                 <?php 
-                     $quantity=0;
+                    <span class="fa fa-shopping-basket"></span>
+                    <span class="aa-cart-title">SHOPPING CART</span>
+                  <?php 
+                    $quantity=0;
                     if (mysqli_num_rows($result) > 0) {
                         while ($row=$result->fetch_assoc()) {
                             $quantity=$quantity+$row["pqty"];
@@ -152,18 +163,17 @@
                         <span class="aa-cart-notify"><?php echo $quantity ?></span>
                         <?php
                     }
-                  ?>
-                 
+                    ?> 
                 </a>
                 <div class="aa-cartbox-summary">
                     <ul>
                       <?php
-                          $sql = "SELECT * FROM cart";
-                          $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
-                          $total=0;
-                          if (mysqli_num_rows($result) > 0) {
+                        $sql = "SELECT * FROM cart";
+                        $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
+                        $total=0;
+                        if (mysqli_num_rows($result) > 0) {
                             while ($row=$result->fetch_assoc()) {
-                            ?>
+                                ?>
                         <li>
                           <a class="aa-cartbox-img" href="#"><img src="image/<?php echo $row["pimage"]; ?>" alt="img"></a>
                           <div class="aa-cartbox-info">
@@ -172,10 +182,10 @@
                           </div>
                           <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                         </li>
-                              <?php 
-                               $total =$total+$row["pqty"]*$row["pprice"];
+                                <?php 
+                                  $total =$total+$row["pqty"]*$row["pprice"];
 
-                              }
+                                 }
                             } 
                             ?>
                       <span class="aa-cartbox-total-title">

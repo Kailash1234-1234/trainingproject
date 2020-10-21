@@ -55,10 +55,10 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $output .="<tr>
         <td><input type='checkbox' /></td>
-        <td>C@{$row["id"]}</td><td>{$row["user_name"]}</td><td>C@{$row["email"]}</td><td>{$row["dob"]}</td><td>C@{$row["address"]}</td>
+        <td>UR{$row["id"]}</td><td>{$row["user_name"]}</td><td>{$row["email"]}</td><td>{$row["dob"]}</td><td>{$row["address"]}</td>
            <!-- Icons -->
            <td>
-            <a href='#' title='Edit'><img src='resources/images/icons/pencil.png' data-ueid='{$row["id"]}' alt='Edit' /></a>
+            <a href='#' title='Edit'><img src='resources/images/icons/pencil.png' class='update-user' data-ueid='{$row["id"]}' alt='Edit' /></a>
             <a title='Delete'  ><img class='delete-user'  data-uid='{$row["id"]}' src='resources/images/icons/cross.png' alt='Delete'  /></a> 
             <a href='#' title='Edit Meta'><img src='resources/images/icons/hammer_screwdriver.png' alt='Edit Meta' /></a>
         </td>

@@ -1,4 +1,16 @@
 <?php
+/**
+ * Templet File Doc Comment
+ * 
+ * PHP version /
+ * 
+ * @category Tenplete_Class
+ * @package  Templete_Class
+ * @author   Author <author@domain.com>
+ * @license  http://opensource.org/MIT MIT License
+ * @link     http://localhost/
+ */
+ 
 require 'admin/config.php';
 if (isset($_POST['action'])) {
     $sql = "SELECT * FROM products WHERE category_id !=''";
@@ -14,17 +26,17 @@ if (isset($_POST['action'])) {
     $output= '<ul class="aa-product-catg" id="result">';
     if ($result->num_rows>0) {
         while ($row=$result->fetch_assoc()) {
-          $output.='<li>
-          <figure>
-            <a class="aa-product-img" href="#"><img src="image/'.$row["image"].'" style="height:300px;" alt="polo shirt img"></a>
-            <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-            <figcaption>
-              <h4 class="aa-product-title"><a href="#">'.$row["name"].'</a></h4>
-              <h4 class="aa-product-title" style="color:green"> <i>'.$row["tags"].'</i> </h4>
-              <span class="aa-product-price">$ '.$row["price"].'</span>
-              <span class="aa-product-price"><del>$'. $res=($row["price"]*20/100).'</del>&nbsp;&nbsp;<b>20% OFF</b></span>
-              <p class="aa-product-descrip">'.$row["long_desc"].'</p>
-            </figcaption>
+            $output.='<li>
+            <figure>
+              <a class="aa-product-img" href="#"><img src="image/'.$row["image"].'" style="height:300px;" alt="polo shirt img"></a>
+              <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+              <figcaption>
+                <h4 class="aa-product-title"><a href="#">'.$row["name"].'</a></h4>
+                <h4 class="aa-product-title" style="color:green"> <i>'.$row["tags"].'</i> </h4>
+                <span class="aa-product-price">$ '.$row["price"].'</span>
+                <span class="aa-product-price"><del>$'. $res=($row["price"]*20/100).'</del>&nbsp;&nbsp;<b>20% OFF</b></span>
+                <p class="aa-product-descrip">'.$row["long_desc"].'</p>
+              </figcaption>
           </figure>                         
           <div class="aa-product-hvr-content">
             <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>

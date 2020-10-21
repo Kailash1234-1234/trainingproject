@@ -1,5 +1,16 @@
 <?php
-include 'config.php';
+/**
+ * Templet File Doc Comment
+ * 
+ * PHP version /
+ * 
+ * @category Tenplete_Class
+ * @package  Templete_Class
+ * @author   Author <author@domain.com>
+ * @license  http://opensource.org/MIT MIT License
+ * @link     http://localhost/
+ */
+require 'config.php';
 
 $sql= "SELECT * FROM tags";
 $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");

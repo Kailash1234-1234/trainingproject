@@ -577,7 +577,7 @@
                              <?php
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
-                         <li> <input type="checkbox" id="categoryid" class="filter_check" value="<?php echo $row["category_id"]; ?>" >
+                                     <li> <input type="checkbox" id="categoryid" class="filter_check" value="<?php echo $row["category_id"]; ?>" >
                                     <?php echo $row['category_id']; ?> </li>
                                     <?php
                                 }

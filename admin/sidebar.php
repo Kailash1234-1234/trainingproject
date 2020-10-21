@@ -41,8 +41,6 @@
 					   Users
 					</a>
 					<ul>
-						
-                        <li><a id="manageuser"  class=" <?php if($filename=='users.php') : ?>current <?php endif ; ?>" href="users.php">Add User</a></li>
                         <li><a id="manageuser"   class=" <?php if($filename=='manageuser.php') : ?>current <?php endif ; ?>" href="manageuser.php">Manage User</a></li>
 					</ul>
                 </li>

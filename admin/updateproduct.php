@@ -38,11 +38,11 @@ if (mysqli_num_rows($result) > 0) {
                     </p>
                     <p>
                     <label>Short Decription </label>
-                        <textarea class="text-input textarea wysiwyg" id="esdesc" name="textfield" cols="70" rows="5"  value="'.$row['name'].'"></textarea>
+                        <input class="text-input medium-input" type="text" id="esdesc" name="textfield" cols="70" rows="5"  value="'.$row['short_desc'].'">
                     </p>
                     <p>
 					<label>long Decription </label>
-					    <textarea class="text-input textarea wysiwyg" id="eldesc" name="textfield" cols="70" rows="5"  value="'.$row['name'].'"></textarea>
+					    <input class="text-input medium-input" type="text" id="eldesc" name="textfield" cols="70" rows="5"  value="'.$row['long_desc'].'">
                   </p>
                   <p>
 					<input class="button editproduct"  data-editdataid='.$row["product_id"].' type="button" value="UPDATE DETAILS" />
