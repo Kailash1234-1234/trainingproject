@@ -140,6 +140,38 @@ $(document).ready(function(){
             })
         }
     });
+	// update tag code..
+	$(document).on("click", ".update-tag", function(){
+       //alert("i am update tag code");
+	    var categoryId=$(this).data("etid");
+	    var emt = this;
+		//alert(categoryId);
+		$.ajax({
+			url : "updatetag.php",
+			type : "POST",
+			data : {catid:categoryId},
+			success: function(data){
+				$("#showtag").html(data);
+			}
+		})
+
+	})
+	// update data
+    $(document).on("click", ".edittag", function(){
+        var tagid= $(this).data("edittagid");
+        var element=this;
+        var tagname= $("#tagname").val();
+       // alert(tagid+tagname);
+        $.ajax({
+            url : "updatetagdetails.php",
+            type : "POST",
+            data : {tagid :tagid, tagname:tagname},
+            success : function(data){
+            //alert(data); 
+            loadtag();
+                }
+        })
+    });
 });
 </script>
 <?php  require 'footer.php'; ?>			

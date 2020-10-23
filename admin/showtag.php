@@ -55,7 +55,7 @@ if (mysqli_num_rows($result) > 0) {
         <td>PT{$row["id"]}</td><td>{$row["name"]}</td>
            <!-- Icons -->
            <td>
-            <a href='#' title='Edit'><img src='resources/images/icons/pencil.png' alt='Edit' /></a>
+            <a href='#' title='Edit'><img class='update-tag' src='resources/images/icons/pencil.png' data-etid='{$row["id"]}' alt='Edit' /></a>
             <a title='Delete'  ><img class='delete-cat'  data-tid='{$row["id"]}' src='resources/images/icons/cross.png' alt='Delete'  /></a> 
             <a href='#' title='Edit Meta'><img src='resources/images/icons/hammer_screwdriver.png' alt='Edit Meta' /></a>
        </td>

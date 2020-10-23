@@ -227,9 +227,8 @@ require 'header.php'; ?>
                                   <figure>
                                     <a class="aa-product-img" href="#"><img src="image/<?php echo $row["image"]; ?>" style="height:300px;" alt="polo shirt img"></a>
                                     <form action="" class="form-submit">
-                           
-                              <a class="aa-add-card-btn addItemBtn"  href="action1.php?id=<?= $row['product_id'];?>" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                            </form>
+                                    <a class="aa-add-card-btn addItemBtn"  href="action1.php?id=<?= $row['product_id'];?>" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                     </form>
                                     
                                     <figcaption>
                                       <h4 class="aa-product-title"><a href="#"><?php echo $row["name"]; ?></a></h4>
@@ -241,7 +240,7 @@ require 'header.php'; ?>
                                   <div class="aa-product-hvr-content">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                                    <a href="#"  data-toggle2="tooltip" data-placement="top" title="Quick View"   data-toggle="modal" data-target="#quick-view-modal"><span data-details="<?php echo $row['product_id']; ?>"  class="fa fa-search  editdetails"></span></a>                             
                                   </div>
                                   <!-- product badge -->
                                     <?php if($desc=($row["price"]*20)/100 ) : ?> 
@@ -269,9 +268,9 @@ require 'header.php'; ?>
                             $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
                             $output="";
                             if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                if ($row["category_id"]=="Men") {
-                                    ?>
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    if ($row["category_id"]=="Men") {
+                                        ?>
                                 <li>
                                   <figure>
                                     <a class="aa-product-img" href="#"><img src="image/<?php echo $row["image"]; ?>" style="height:300px;" alt="polo shirt img"></a>
@@ -288,7 +287,7 @@ require 'header.php'; ?>
                                   <div class="aa-product-hvr-content">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                                    <a href="#"  data-toggle2="tooltip" data-placement="top" title="Quick View"   data-toggle="modal" data-target="#quick-view-modal"><span data-details="<?php echo $row['product_id']; ?>"  class="fa fa-search  editdetails"></span></a>                              
                                   </div>
                                   <!-- product badge -->
                                         <?php if($desc=($row["price"]*20)/100 ) : ?> 
@@ -297,7 +296,7 @@ require 'header.php'; ?>
                                 </li>
                                 <!-- start single product item -->
                                             <?php
-                                        }
+                                    }
                                 }
                                 // mysqli_close($con);
                                 echo $output;
@@ -312,7 +311,6 @@ require 'header.php'; ?>
                     <!-- start kids product category -->
                     <div class="tab-pane fade" id="kids">
                       <ul class="aa-product-catg">
-                       
                         <?php
                         require 'admin/config.php';
                         $sql= "SELECT * FROM products ";
@@ -338,7 +336,7 @@ require 'header.php'; ?>
                                   <div class="aa-product-hvr-content">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                                    <a href="#"  data-toggle2="tooltip" data-placement="top" title="Quick View"   data-toggle="modal" data-target="#quick-view-modal"><span data-details="<?php echo $row['product_id']; ?>"  class="fa fa-search  editdetails"></span></a>                              
                                   </div>
                                   <!-- product badge -->
                                     <?php if($desc=($row["price"]*20)/100 ) : ?> 
@@ -387,7 +385,7 @@ require 'header.php'; ?>
                                   <div class="aa-product-hvr-content">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+                                    <a href="#"  data-toggle2="tooltip" data-placement="top" title="Quick View"   data-toggle="modal" data-target="#quick-view-modal"><span data-details="<?php echo $row['product_id']; ?>"  class="fa fa-search  editdetails"></span></a>                              
                                   </div>
                                   <!-- product badge -->
                                     <?php if($desc=($row["price"]*20)/100 ) : ?> 
@@ -438,7 +436,7 @@ require 'header.php'; ?>
                                   <div class="aa-product-hvr-content">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span data-id="<?php echo $row["product_id"]; ?>" class="fa fa-search"></span></a>                            
+                                    <a href="#"  data-toggle2="tooltip" data-placement="top" title="Quick View"   data-toggle="modal" data-target="#quick-view-modal"><span data-details="<?php echo $row['product_id']; ?>"  class="fa fa-search  editdetails"></span></a>                            
                                   </div>
                                   <!-- product badge -->
                                     <?php if($desc=($row["price"]*20)/100 ) : ?> 
@@ -468,92 +466,8 @@ require 'header.php'; ?>
                       <div class="modal-content">                      
                         <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          <div class="row">
-                            <!-- Modal view slider -->
-                            <div class="col-md-6 col-sm-6 col-xs-12">  
-                            <?php 
-                            $sql= "select * from products";
-                            $result = mysqli_query($con, $sql) or die("SQL QUERY FAILED");
-                            $output="";
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    if ($row["product_id"]=="5001") {
-                                        ?>                            
-                              <div class="aa-product-view-slider">                                
-                                <div class="simpleLens-gallery-container" id="demo-1">
-                                  <div class="simpleLens-container">
-                                      <div class="simpleLens-big-image-container">
-                                          <a class="simpleLens-lens-image" data-lens-image="img/view-slider/large/polo-shirt-1.png">
-                                              <img src="image/<?php echo $row["image"];?>" class="simpleLens-big-image">
-                                          </a>
-                                      </div>
-                                  </div>
-                                  <div class="simpleLens-thumbnails-container">
-                                      <a href="#" class="simpleLens-thumbnail-wrapper"
-                                         data-lens-image="img/view-slider/large/polo-shirt-1.png"
-                                         data-big-image="img/view-slider/medium/polo-shirt-1.png">
-                                          <img src="img/view-slider/thumbnail/polo-shirt-1.png">
-                                      </a>                                    
-                                      <a href="#" class="simpleLens-thumbnail-wrapper"
-                                         data-lens-image="img/view-slider/large/polo-shirt-3.png"
-                                         data-big-image="img/view-slider/medium/polo-shirt-3.png">
-                                          <img src="img/view-slider/thumbnail/polo-shirt-3.png">
-                                      </a>
-
-                                      <a href="#" class="simpleLens-thumbnail-wrapper"
-                                         data-lens-image="img/view-slider/large/polo-shirt-4.png"
-                                         data-big-image="img/view-slider/medium/polo-shirt-4.png">
-                                          <img src="img/view-slider/thumbnail/polo-shirt-4.png">
-                                      </a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Modal view content -->
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <div class="aa-product-view-content">
-                             
-                                <h3><?php echo $row["name"];  ?></h3>
-                                <div class="aa-price-block">
-                                  <span class="aa-product-view-price"><?php echo $row["price"];  ?></span>
-                                  <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
-                                </div>
-                                <p><?php echo $row["long_desc"];  ?></p>
-                                <h4><?php echo $row["tags"];  ?></h4>
-                                <div class="aa-prod-view-size">
-                                  <a href="#">S</a>
-                                  <a href="#">M</a>
-                                  <a href="#">L</a>
-                                  <a href="#">XL</a>
-                                </div>
-                                <div class="aa-prod-quantity">
-                                  <form action="">
-                                    <select name="" id="">
-                                      <option value="0" selected="1">1</option>
-                                      <option value="1">2</option>
-                                      <option value="2">3</option>
-                                      <option value="3">4</option>
-                                      <option value="4">5</option>
-                                      <option value="5">6</option>
-                                    </select>
-                                  </form>
-                                  <p class="aa-prod-category">
-                                    Category: <a href="#"><?php echo $row["category_id"];  ?></a>
-                                  </p>
-                                </div>
-                                <div class="aa-prod-view-bottom">
-                                  <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                  <a href="#" class="aa-add-to-cart-btn">View Details</a>
-                                </div>
-                              </div>
-                             
-                            </div>
+                          <div id="showdetails">
                           </div>
-                                        <?php
-                                    }
-                                }
-                            }
-                            ?>
                         </div>                        
                       </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
@@ -1234,5 +1148,27 @@ require 'header.php'; ?>
     </div>
   </section>
   <!-- / Client Brand -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+  <script>
+                $(document).ready(function(){
+                    $(document).on("click", ".editdetails", function(){
+                  //  alert("i am detail");
+                     var pid= $(this).data("details");
+                     var element=this;
+                    // alert("hhhhhhhhhhhhhhh");
+                   //  alert(pid);
+
+                     $.ajax({
+                       url : "productdetailmodel.php",
+                       type : "POST",
+                       data : {pid:pid},
+                       success : function(data){
+                        $("#showdetails").html(data);
+                       }
+                     })
+                  })
+                })
+                         
+                 </script>       
 <?php require 'footer.php'; ?>
  

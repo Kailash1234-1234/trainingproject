@@ -38,6 +38,8 @@
         <div class="col-md-12">
           <div class="aa-product-details-area">
             <div class="aa-product-details-content">
+             
+             
               <div class="row">
                 <!-- Modal view slider -->
                 <div class="col-md-5 col-sm-5 col-xs-12">                              
@@ -107,6 +109,8 @@
                   </div>
                 </div>
               </div>
+
+              
             </div>
             <div class="aa-product-details-bottom">
               <ul class="nav nav-tabs" id="myTab2">

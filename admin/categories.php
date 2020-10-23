@@ -1,7 +1,18 @@
-<?php include('header.php'); ?>
-	<?php include('sidebar.php') ?>
-<div id="main-content"> <!-- Main Content Section with everything -->
-			
+<?php
+/**
+ * Templet File Doc Comment
+ * 
+ * PHP version /
+ * 
+ * @category Tenplete_Class
+ * @package  Templete_Class
+ * @author   Author <author@domain.com>
+ * @license  http://opensource.org/MIT MIT License
+ * @link     http://localhost/
+ */
+require 'header.php'; ?>
+<?php require 'sidebar.php'; ?>
+    <div id="main-content"> <!-- Main Content Section with everything -->	
 			<noscript> <!-- Show a notification if the user has disabled javascript -->
 				<div class="notification error png_bg">
 					<div>

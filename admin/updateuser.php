@@ -38,7 +38,6 @@ if (mysqli_num_rows($result) > 0) {
                     </p>
                   <p>
 					<input class="button edituser"  data-edituserid='.$row["id"].' type="button" value="UPDATE DETAILS" />
-								</p>
                   </p>
                 ';
     } 

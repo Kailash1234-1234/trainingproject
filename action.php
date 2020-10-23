@@ -29,10 +29,11 @@ if (isset($_POST['action'])) {
             $output.='<li>
             <figure>
               <a class="aa-product-img" href="#"><img src="image/'.$row["image"].'" style="height:300px;" alt="polo shirt img"></a>
-              <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+              <form action="" class="form-submit">     
+              <a class="aa-add-card-btn addItemBtn"  href="action1.php?id='.$row['product_id'].'" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+            </form>
               <figcaption>
                 <h4 class="aa-product-title"><a href="#">'.$row["name"].'</a></h4>
-                <h4 class="aa-product-title" style="color:green"> <i>'.$row["tags"].'</i> </h4>
                 <span class="aa-product-price">$ '.$row["price"].'</span>
                 <span class="aa-product-price"><del>$'. $res=($row["price"]*20/100).'</del>&nbsp;&nbsp;<b>20% OFF</b></span>
                 <p class="aa-product-descrip">'.$row["long_desc"].'</p>
@@ -41,7 +42,7 @@ if (isset($_POST['action'])) {
           <div class="aa-product-hvr-content">
             <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
             <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-            <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
+            <a href="#"  data-toggle2="tooltip" data-placement="top" title="Quick View"   data-toggle="modal" data-target="#quick-view-modal"><span data-details="'.$row['product_id'].'"  class="fa fa-search  editdetails"></span></a>                            
           </div>
           <!-- product badge -->
           <?php if($desc=($row["price"]*20)/100 ) : ?> 

@@ -184,10 +184,9 @@
                         </li>
                                 <?php 
                                   $total =$total+$row["pqty"]*$row["pprice"];
-
-                                 }
-                            } 
-                            ?>
+                            }
+                        } 
+                        ?>
                       <span class="aa-cartbox-total-title">
                         Total
                       </span>
